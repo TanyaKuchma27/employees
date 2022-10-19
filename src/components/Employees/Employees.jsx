@@ -4,7 +4,7 @@ import { fetchEmployees } from "../../redux/operations";
 import { getEmployees } from "../../redux/emploeesSlice";
 import getAlphabet from "utils/alphabet";
 import { Card } from '../Card';
-import { Title, List, Item, Letter, Text } from './Employees.styled';
+import { Title, List, Item, Letter, Text, CardItem} from './Employees.styled';
 
 export const Employees = () => {
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export const Employees = () => {
                             <Letter>{letter}</Letter>
                             <ul>
                                 {employeesByLetter[idx].map(employee => (
-                                    <li key={employee.id}><Card {...employee}/> </li>
+                                    <CardItem key={employee.id}><Card {...employee}/> </CardItem>
                                 ))}
                             </ul>
                         </Item>
