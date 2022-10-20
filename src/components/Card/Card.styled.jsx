@@ -2,11 +2,23 @@ import styled from 'styled-components/macro';
 
 export const Name = styled.p`
     color: ${props =>
-        props.isActive ? '#000000' : '#ffffff'
-        }
+        props.isActive ? '#ffffff' : '#000000'
+        };
+    font-weight: bold;
+    margin-bottom: 8px;
 `;
 
 export const Form = styled.form`
     display: flex;
-    flex-wrap: wrap;     
+    flex-direction: column; 
+    align-items: flex-start;    
+    justify-content: center;
+`;
+
+export const Input = styled.input`
+    
+`;
+
+export const Text = styled.span`
+    margin-left: 8px;
 `;

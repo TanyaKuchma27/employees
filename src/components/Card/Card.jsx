@@ -1,20 +1,25 @@
 import { useState } from 'react';
-import { Name, Form } from './Card.styled';
+import { Name, Form, Input, Text } from './Card.styled';
 
 export const Card = ({ id, firstName, lastName }) => {
     const [isActive, setIsActive] = useState(false);  
 
     const onChangeValue = (e) => {
-        setIsActive(e.target.value);
-        console.log(e.target.name);
+        setIsActive(JSON.parse(e.target.value));
     } 
 
     return (
         <>
-            <Name isActive={isActive}>{firstName} {lastName} {isActive }</Name>
+            <Name isActive={isActive}>{firstName} {lastName}</Name>
             <Form>
-                <input type="radio" value="false" name={id} onChange={onChangeValue} /> not active
-                <input type="radio" value="true" name={id} onChange={onChangeValue} /> active                
+                <label>
+                    <Input type="radio" value={false} name={id} onChange={onChangeValue} />
+                    <Text>not active</Text>
+                </label>
+                <label>
+                    <Input type="radio" value={true} name={id} onChange={onChangeValue} />
+                    <Text>active</Text>
+                </label>
             </Form>
         </>
     )
