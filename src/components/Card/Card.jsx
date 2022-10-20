@@ -1,23 +1,41 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteBirthday, addBirthday, getBirthday } from 'redux/birthdaySlice';
 import { Name, Form, Input, Text } from './Card.styled';
 
-export const Card = ({ id, firstName, lastName }) => {
-    const [isActive, setIsActive] = useState(false);  
+export const Card = (employee) => {
+    const birthdayIds = useSelector(getBirthday.selectIds); 
+    const dispatch = useDispatch();
 
-    const onChangeValue = (e) => {
-        setIsActive(JSON.parse(e.target.value));
+    const removeDOB = e => {
+        dispatch(deleteBirthday(e.target.name));
     } 
+
+    const addDOB = e => {
+        dispatch(addBirthday(employee));
+    } 
+
+    const isSelected = birthdayIds.includes(employee.id)
 
     return (
         <>
-            <Name isActive={isActive}>{firstName} {lastName}</Name>
+            <Name isActive={isSelected}>{employee.firstName} {employee.lastName}</Name>
             <Form>
                 <label>
-                    <Input type="radio" value={false} name={id} onChange={onChangeValue} />
+                    <Input
+                        type="radio"
+                        value={false}
+                        name={employee.id}
+                        onChange={removeDOB}
+                        checked={!isSelected} />
                     <Text>not active</Text>
                 </label>
                 <label>
-                    <Input type="radio" value={true} name={id} onChange={onChangeValue} />
+                    <Input
+                        type="radio"
+                        value={true}
+                        name={employee.id}
+                        onChange={addDOB}
+                        checked={isSelected} />
                     <Text>active</Text>
                 </label>
             </Form>

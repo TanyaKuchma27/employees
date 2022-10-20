@@ -1,11 +1,14 @@
-import { store } from '../redux/store';
 import { Provider } from 'react-redux';
-import { Employees } from './Employees';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store,  persistor } from '../redux/store';
+import { Page } from './Page';
 
 export const App = () => {
   return (
     <Provider store={store}>
-      <Employees/>
+      <PersistGate loading={null} persistor={persistor}>
+        <Page />
+      </PersistGate>
     </Provider>  
   );
 };

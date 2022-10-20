@@ -14,9 +14,8 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-    margin: 12px;
-    padding: 8px;
-    width: calc((100% - 12 * 12px) / 6);
+    margin: 6px;
+    width: calc((100% - 8 * 6px) / 4);
     background: #422f99;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2), 0px 4px 4px 0px #00000040;

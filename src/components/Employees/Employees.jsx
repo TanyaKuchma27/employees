@@ -16,9 +16,6 @@ export const Employees = () => {
         dispatch(fetchEmployees());
     }, [dispatch]);
 
-    console.log(employees);
-    console.log(alphabet);  
-
     let employeesByLetter = []
 
     if (employees) {
@@ -26,7 +23,7 @@ export const Employees = () => {
             employees?.filter(item => item.firstName[0] === letter)
         ));        
     }  
-    
+
     return (
         <>
             <Title>Employees</Title>
@@ -38,7 +35,7 @@ export const Employees = () => {
                             <Letter>{letter}</Letter>
                             <ul>
                                 {employeesByLetter[idx].map(employee => (
-                                    <CardItem key={employee.id}><Card {...employee}/> </CardItem>
+                                    <CardItem key={employee.id}><Card {...employee} /> </CardItem>
                                 ))}
                             </ul>
                         </Item>
