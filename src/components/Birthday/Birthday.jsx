@@ -1,19 +1,42 @@
 import { useSelector } from "react-redux";
 import { getBirthday } from "redux/birthdaySlice";
-import { Title, List, Text } from './Birthday.styled';
+import { Title, List, Month, MonthName, Item } from './Birthday.styled';
+import { months } from '../../utils/months';
 
 export const Birthday = () => {
     const birthday = useSelector(getBirthday.selectAll);
+    
+    const employeesByMonth = months.map(month => (
+        birthday.filter(item => ((new Date(item.dob)).getMonth()) === month.id)
+    )); 
+
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };    
 
     return (
         <>
             <Title>Employees birthday</Title>
             {(birthday.length > 0) ? (
-                <ul>
-                    {birthday.map(item =>
-                        <List key={item.id}>{item.lastName} {item.firstName} - {item.dob}</List>)}
-                </ul>
-            ) : (<Text>Employees List is empty</Text>)}
+                <List>
+                    {months.map((month, idx) => (
+                        (employeesByMonth[idx].length > 0) ? (
+                            <Month key={idx}>
+                                <MonthName>{month.name}</MonthName>
+                                <ul>
+                                    {employeesByMonth[idx].map(item =>
+                                        <Item key={item.id}>
+                                            <p>{item.lastName} {item.firstName} - {(new Intl.DateTimeFormat('en-GB', options).format(new Date(item.dob)))} year</p>
+                                        </Item>)}
+                                </ul>
+                            </Month>
+                        ) : (
+                            <Month key={idx}>
+                                <MonthName>{month.name}</MonthName>
+                                <p>No Employees</p>
+                            </Month>
+                        )
+                    ))}
+                    </List>
+                ) : (<p>Employees List is empty</p>)}            
         </>
     )
 }
