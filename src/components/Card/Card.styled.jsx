@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Name = styled.p`
     color: ${props =>
-        props.isActive ? '#ffffff' : '#000000'
+        props.isActive ? '#4b1dca' : '#000000'
         };
     font-weight: bold;
     margin-bottom: 8px;
