@@ -10,8 +10,8 @@ export const Birthday = () => {
         birthday.filter(item => ((new Date(item.dob)).getMonth()) === month.id)
     )); 
 
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };    
-
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };   
+    
     return (
         <>
             <Title>Employees birthday</Title>
@@ -19,7 +19,7 @@ export const Birthday = () => {
                 <List>
                     {months.map((month, idx) => (
                         (employeesByMonth[idx].length > 0) ? (
-                            <Month key={idx}>
+                            <Month key={month.id}>
                                 <MonthName>{month.name}</MonthName>
                                 <ul>
                                     {employeesByMonth[idx].map(item =>
@@ -29,7 +29,7 @@ export const Birthday = () => {
                                 </ul>
                             </Month>
                         ) : (
-                            <Month key={idx}>
+                            <Month key={month.id}>
                                 <MonthName>{month.name}</MonthName>
                                 <p>No Employees</p>
                             </Month>

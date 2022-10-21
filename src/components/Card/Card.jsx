@@ -6,11 +6,11 @@ export const Card = (employee) => {
     const birthdayIds = useSelector(getBirthday.selectIds); 
     const dispatch = useDispatch();
 
-    const removeDOB = e => {
-        dispatch(deleteBirthday(e.target.name));
+    const removeDOB = event => {
+        dispatch(deleteBirthday(event.target.name));
     } 
 
-    const addDOB = e => {
+    const addDOB = () => {
         dispatch(addBirthday(employee));
     } 
 
