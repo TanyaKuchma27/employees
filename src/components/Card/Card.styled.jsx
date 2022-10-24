@@ -15,10 +15,6 @@ export const Form = styled.form`
     justify-content: center;
 `;
 
-export const Input = styled.input`
-    
-`;
-
 export const Text = styled.span`
     margin-left: 8px;
 `;

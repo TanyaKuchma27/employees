@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import t from 'i18n/translate';
 import { deleteBirthday, addBirthday, getBirthday } from 'redux/birthdaySlice';
-import { Name, Form, Input, Text } from './Card.styled';
+import { Name, Form, Text } from './Card.styled';
 
 export const Card = (employee) => {
     const birthdayIds = useSelector(getBirthday.selectIds); 
@@ -22,7 +22,7 @@ export const Card = (employee) => {
             <Name isActive={isSelected}>{employee.firstName} {employee.lastName}</Name>
             <Form>
                 <label>
-                    <Input
+                    <input
                         type="radio"
                         value={false}
                         name={employee.id}
@@ -31,7 +31,7 @@ export const Card = (employee) => {
                     <Text>{t('not_active')}</Text>
                 </label>
                 <label>
-                    <Input
+                    <input
                         type="radio"
                         value={true}
                         name={employee.id}

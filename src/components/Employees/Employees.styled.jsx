@@ -4,6 +4,8 @@ export const Title = styled.h2`
     margin: 10px 0;    
     text-align: center;
     color: #1b175e;
+    font-size: 24px;
+    font-weight: bold;
 `;
 
 export const List = styled.ul`
@@ -27,6 +29,8 @@ export const Letter = styled.h3`
     margin-bottom: 10px;
     color: #b4b3c9;
     text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 `;
 
 export const Text = styled.p`
