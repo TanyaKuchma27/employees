@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees } from "../../redux/operations";
 import { getEmployees } from "../../redux/emploeesSlice";
 import { alphabet } from "utils/alphabet";
+import t from 'i18n/translate';
 import { Card } from '../Card';
 import { Title, List, Item, Letter, Text, CardItem} from './Employees.styled';
 
@@ -21,15 +22,14 @@ export const Employees = () => {
         employeesByLetter = alphabet.map(item => (
             employees?.filter(employee => employee.firstName[0] === item.letter)
         ));        
-    }  
-
-    console.log(employeesByLetter)
+    } 
 
     return (
         <>
-            <Title>Employees</Title>
+            <Title>{t('employees')}</Title>
             <List>  
-                {isLoading && <h2>Loading...</h2>} 
+                {isLoading &&
+                    <h2>{t('loading')}...</h2>} 
                 {(employees.length > 0) && alphabet.map((item, idx) => (
                     (employeesByLetter[idx].length > 0) ? (
                         <Item key={item.id}>
@@ -43,7 +43,7 @@ export const Employees = () => {
                     ) : (
                         <Item key={item.id}>
                             <Letter>{item.letter}</Letter>
-                            <Text>No Employees</Text>
+                            <Text>{t('no_employees')}</Text>
                         </Item>
                     )
                 ))}

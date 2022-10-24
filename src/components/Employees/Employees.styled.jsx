@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Title = styled.h2`
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 10px 0;    
     text-align: center;
     color: #1b175e;
 `;

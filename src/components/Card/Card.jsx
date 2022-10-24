@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import t from 'i18n/translate';
 import { deleteBirthday, addBirthday, getBirthday } from 'redux/birthdaySlice';
 import { Name, Form, Input, Text } from './Card.styled';
 
@@ -27,7 +28,7 @@ export const Card = (employee) => {
                         name={employee.id}
                         onChange={removeDOB}
                         checked={!isSelected} />
-                    <Text>not active</Text>
+                    <Text>{t('not_active')}</Text>
                 </label>
                 <label>
                     <Input
@@ -36,7 +37,7 @@ export const Card = (employee) => {
                         name={employee.id}
                         onChange={addDOB}
                         checked={isSelected} />
-                    <Text>active</Text>
+                    <Text>{t('active')}</Text>
                 </label>
             </Form>
         </>
